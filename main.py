@@ -15,12 +15,14 @@ def homepage():
     query = f' SELECT * FROM quotes_tbl WHERE id = {random_number}'
     sql_query = pd.read_sql(query, engine)
     sql_query_quotes = sql_query['quotes']
-    
-    return render_template('index.html', data=sql_query_quotes.values[0])
+    sql_query_author = sql_query['quotes_author']
+
+    return render_template('index.html', data=sql_query_quotes.values[0], author=sql_query_author.values[0])
     
 
 if __name__ == "__main__":
     app.run(debug=True)
+
 
 
 
