@@ -11,7 +11,7 @@ engine = create_engine("mysql+pymysql://root:password@0.0.0.0:3306/quotes", pool
 
 @app.route('/')
 def homepage():
-    random_number = random.randint(1,2)
+    random_number = random.randint(1,11)
     query = f' SELECT * FROM quotes_tbl WHERE id = {random_number}'
     sql_query = pd.read_sql(query, engine)
     sql_query_quotes = sql_query['quotes']
